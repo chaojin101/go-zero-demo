@@ -1,0 +1,12 @@
+Name: bookstore-api
+Host: 0.0.0.0
+Port: 8888
+
+# database
+DB:
+  DataSource: root:password@tcp(172.30.112.1:3306)/bookstore
+
+# Cache
+Cache:
+  - Host: 127.0.0.1:6379
+    Pass:
