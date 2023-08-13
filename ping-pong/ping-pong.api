@@ -1,0 +1,11 @@
+type (
+	req  struct{}
+	resp {
+		Message string `json:"message"`
+	}
+)
+
+service ping-pong-api {
+	@handler ping
+	get /ping (req) returns (resp)
+}

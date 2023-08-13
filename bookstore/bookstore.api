@@ -1,0 +1,28 @@
+type (
+	createReq {
+		Name string `json:"name"`
+	}
+	createResp {
+		Message string `json:"message"`
+	}
+)
+
+type (
+	readBookByNameReq {
+		Name string `form:"name"`
+	}
+	readBookByNameResp {
+		Id   int64  `json:"id"`
+		Name string `json:"name"`
+	}
+)
+
+@server (
+	prefix: /v1/books
+)
+service bookstore-api {
+	@handler createBook
+	post / (createReq) returns (createResp)
+	@handler readBookByName
+	get / (readBookByNameReq) returns (readBookByNameResp)
+}
