@@ -112,6 +112,22 @@ type Config struct {
 }
 ```
 
+modify `ServiceContext` struct and `NewServiceContext` function in `bookstore/internal/svc/serviceContext.go` to
+```go
+type ServiceContext struct {
+	Config    config.Config
+	BookModel model.BookModel
+}
+
+func NewServiceContext(c config.Config) *ServiceContext {
+	return &ServiceContext{
+		Config:    c,
+		BookModel: model.NewBookModel(sqlx.NewMysql(c.DB.DataSource)),
+	}
+}
+```
+
+
 ## Write logic
 
 ### CreateBook
